@@ -1,0 +1,15 @@
+services:
+  ems-frontend:
+    container_name: ems-container
+    build: .
+    image: frontend-img:v1
+    ports:
+      - 80:80
+    expose:
+        - 80
+    networks:
+      - ds-network
+
+networks:
+  ds-network:
+    driver: bridge

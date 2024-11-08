@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/devices/create" routerLinkActive="router-link-active"  class="btn btn-primary m-1">Add Device</a>
+  </div>
+  <div class="col-md-6">
+    <input type="text" class="form-control m-1" placeholder="Search Device">
+  </div>
+</div>
+<div class="card-group" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); grid-column-gap: 10px;">
+  @for(device of devices$ | async; track device){
+    <div class="card mx-2 mt-2 rounded shadow p-3" style="width: 35rem;">
+      <div class="card-body row">
+        <div class="col-md-10">
+          <h3 class="card-title">{{ device.description }} </h3>
+          <h5> {{ device.id }}.</h5>
+          <p class="card-text">Location : {{ device.address }} <br> Power usage  : {{ device.maxEnergyConsumption }}kWh <br>Owner (id) : {{ device.userId }} <br> </p>
+        </div>
+        <div class="col-md-2" style="width:5rem;">
+          <div class="row">
+              <a [routerLink]="['/devices/edit', device.id]" routerLinkActive="router-link-active" class="btn btn-primary m-1">Edit</a>
+          </div>
+          <div class="row">
+              <a routerLink="" routerLinkActive="router-link-active" class="btn btn-danger m-1" (click)="deleteDevice(device.id)">Delete</a>
+          </div>
+          <div class="row">
+              <a routerLink="" routerLinkActive="router-link-active" class="btn btn-secondary m-1" (click)="assignToUser()">Assign</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/users/create" routerLinkActive="router-link-active"  class="btn btn-primary m-1">Add User</a>
+  </div>
+  <div class="col-md-6">
+    <input type="text" class="form-control m-1" placeholder="Search User">
+  </div>
+</div>
+<div class="card-group" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); grid-column-gap: 10px;">
+  @for(user of users$ | async; track user){
+    <div class="card mx-2 mt-2 rounded shadow p-3" style="width: 35rem;">
+      <div class="card-body row">
+        <div class="col-md-10">
+          <h3 class="card-title">{{ user.name }} </h3>
+          <h5> {{ user.id }} </h5>
+          <p class="card-text">Role : {{ user.role }}
+          </p>
+        </div>
+        <div class="col-md-2" style="width:5rem;">
+          <div class="row">
+              <a [routerLink]="['/users/edit', user.id]" routerLinkActive="router-link-active" class="btn btn-primary m-1">Edit</a>
+          </div>
+          <div class="row">
+              <a routerLink="" routerLinkActive="router-link-active" class="btn btn-danger m-1" (click)="deleteUser(user.id)">Delete</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+</div>
