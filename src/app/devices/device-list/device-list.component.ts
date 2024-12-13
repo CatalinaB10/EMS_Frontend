@@ -1,3 +1,5 @@
+
+import { Measurement } from './../models/measurement';
 import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -65,4 +67,40 @@ export class DeviceListComponent implements OnInit {
   assignToUser () {
     this.router.navigate(['/devices/assign']);
   }
+
+  // sendMessage(deviceId: string) {
+  //   // this.deviceService.countMeasurements().subscribe(count => {
+  //     // var nextId = count + 1;
+  //     var measurement: Measurement = {
+  //       id: 0,
+  //       value: Math.random() * 100,
+  //       deviceId: deviceId,
+  //       timestamp: new Date()
+  //     };
+
+  //     this.deviceService.sendMessage(measurement).subscribe({
+  //       next: (message) => {
+  //         console.log('Message sent successfully:', message);
+  //         this.snackBar.open('Message sent successfully', 'Close');
+  //       },
+  //       error: (err) => {
+  //         console.error('Error sending message:', err);
+  //         this.snackBar.open('Error sending message', 'Close');
+  //       }
+  //     });
+  //   // });
+  // }
+
+  // readMessage() {
+  //   this.deviceService.readMessages().subscribe({
+  //     next: (message) => {
+  //       console.log('Message read successfully:', message);
+  //       this.snackBar.open('Message read successfully', 'Close');
+  //     },
+  //     error: (err) => {
+  //       console.error('Error reading message:', err);
+  //       this.snackBar.open('Error reading message', 'Close');
+  //     }
+  //   });
+  // }
 }
